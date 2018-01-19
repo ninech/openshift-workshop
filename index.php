@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <?php echo "Hello World, have a great " . date("l") . "!"; ?>
+  <h1>Hello World, have a great <?= date("l") ?>!</h1>
 
   <?php
     if (getenv("MYSQL_HOST") == "") {
@@ -19,15 +19,18 @@
     if ($mysqli->connect_errno) {
       die("Database connection failed: " . $mysqli->connect_error);
     }
+  ?>
 
-    echo "<p>Connection to mysql established.</p>\n";
+  <p>Connection to mysql established.</p>
 
+  <?php
     $statement = $mysqli->prepare("SELECT VERSION() as version;");
     $statement->execute();
     $result = $statement->get_result();
 
     $row = $result->fetch_assoc();
-    echo "<p>MySQL version: " . $row["version"] . "</p>\n";
   ?>
+
+  <p>MySQL version: <?= $row["version"] ?></p>
 </body>
 </html>
