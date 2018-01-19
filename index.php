@@ -11,6 +11,10 @@
   <?php echo "Hello World, have a great " . date("l") . "!"; ?>
 
   <?php
+    if (getenv("MYSQL_HOST") == "") {
+      die("Please provide the MYSQL_HOST environment variable, so I know where I have to connect to.");
+    }
+
     $mysqli = new mysqli(getenv("MYSQL_HOST"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"), getenv("MYSQL_DATABASE"));
     if ($mysqli->connect_errno) {
       die("Database connection failed: " . $mysqli->connect_error);
