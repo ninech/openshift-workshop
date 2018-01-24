@@ -27,7 +27,7 @@ containers:
 - ...
   resources:
     limits:
-    memory: 50Mi
+      memory: 50Mi
 ```
 
 * Add a "MySQL (Persistent)" Service to your project via the UI. ("Add to project / Browse catalog")
